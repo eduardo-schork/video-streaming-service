@@ -18,4 +18,4 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [ ] CRUD users
 - [ ] Auth provider
 - [ ] Transform into monorepo
-- [ ] Separe all packages and transform into microservices
+- [ ] Split all packages and transform into microservices
