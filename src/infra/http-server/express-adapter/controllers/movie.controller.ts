@@ -1,6 +1,5 @@
-import { Request, Response } from "express";
-
 import { CreateMovieInput } from "@usecases/movie/types";
+import { Request, Response } from "express";
 
 import createMovieUsecase from "@usecases/movie/create-movie.usecase";
 import findAllMoviesUsecase from "@usecases/movie/find-all-movies.usecase";

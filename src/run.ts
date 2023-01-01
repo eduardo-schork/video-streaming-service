@@ -1,11 +1,11 @@
 import database from "@infra/database/database";
-import httpsServer from "@infra/https-server/https-server";
+import httpServer from "@infra/http-server/http-server";
 
 require("dotenv").config();
 
 async function start() {
   await database.run();
-  httpsServer.run();
+  httpServer.run();
 }
 
 start();

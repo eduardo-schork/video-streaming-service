@@ -10,7 +10,7 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 
 ### Roadmap
 
-- [x] Https server using Express
+- [x] Http server using Express
 - [x] Local File System
 - [x] Database using MongoDB
 - [x] Streaming endpoint
@@ -19,3 +19,7 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [ ] Auth provider
 - [ ] Transform into monorepo
 - [ ] Separe all packages and transform into microservices
+- [ ] Cover all the app with tests
+- [ ] Create repositories
+- [ ] Dependence injection (?)
+- [ ] Add Husky to project
