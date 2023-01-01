@@ -2,6 +2,7 @@ import express, { Express } from "express";
 import cors from "cors";
 import { HttpServerAdapter } from "../types";
 import router from "./routes/router";
+import errorHandlerMiddleware from "./middlewares/error-handler.middleware";
 
 // TODO only enable cors on develop env
 const corsOptions = {
@@ -15,6 +16,7 @@ const registerMiddlewares = (expressServer: Express) => {
   expressServer.use(cors(corsOptions));
   expressServer.use(express.json());
   expressServer.use(router);
+  expressServer.use(errorHandlerMiddleware);
 };
 
 const run = () => {

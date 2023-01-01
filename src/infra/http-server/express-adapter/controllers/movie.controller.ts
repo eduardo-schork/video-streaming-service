@@ -1,16 +1,20 @@
-import { CreateMovieInput } from "@usecases/movie/types";
 import { Request, Response } from "express";
 
-import createMovieUsecase from "@usecases/movie/create-movie.usecase";
-import findAllMoviesUsecase from "@usecases/movie/find-all-movies.usecase";
-import findOneMovieUsecase from "@usecases/movie/find-one-movie.usecase";
-import loadMovieUsecase from "@usecases/movie/load-movie.usecase";
+import { CreateMovieInput } from "@features/movie/usecases/types";
+
+import loadMovieUsecase from "@features/movie/usecases/load-movie.usecase";
+import createMovieUsecase from "@features/movie/usecases/create-movie.usecase";
+import findOneMovieUsecase from "@features/movie/usecases/find-one-movie.usecase";
+import findAllMoviesUsecase from "@features/movie/usecases/find-all-movies.usecase";
+import MissingMovieIdError from "@features/movie/errors/missing-movie-id.error";
+import MissingMovieFileError from "@features/movie/errors/missing-movie-file.error";
+import MissingRangeHeaderError from "@features/movie/errors/missing-range-header.error";
 
 async function handleFindOneMovie(req: Request, res: Response) {
   const idToSearch = req.params.uid;
 
   if (!idToSearch) {
-    return res.status(400);
+    throw new MissingMovieIdError();
   }
 
   const moviesList = await findOneMovieUsecase(idToSearch);
@@ -29,7 +33,7 @@ async function handleCreateMovie(req: Request, res: Response) {
   const reqBody = req.body as CreateMovieInput;
 
   if (!reqFilename) {
-    return res.status(404);
+    throw new MissingMovieFileError();
   }
 
   const body: CreateMovieInput = {
@@ -47,11 +51,11 @@ async function handleMovieStreaming(req: Request, res: Response) {
   const reqMovieId = req.params.uid;
 
   if (!reqMovieId) {
-    res.status(400).send("Requires a target movie id");
+    throw new MissingMovieIdError();
   }
 
   if (!reqRange) {
-    res.status(400).send("Requires Range header");
+    throw new MissingRangeHeaderError();
   }
 
   const { contentLength, videoStream, startBytes, endBytes, videoSize } =
