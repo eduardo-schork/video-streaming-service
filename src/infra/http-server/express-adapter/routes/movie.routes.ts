@@ -5,7 +5,7 @@ import {
   handleFindAllMovies,
   handleFindOneMovie,
   handleMovieStreaming,
-} from "../controllers/video.controller";
+} from "../controllers/movie.controller";
 
 import FileSystemAdapter from "@infra/filesystem/filesystem";
 

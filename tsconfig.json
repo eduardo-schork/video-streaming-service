@@ -8,7 +8,7 @@
     "baseUrl": "./",
     "paths": {
       "@infra/*": ["src/infra/*"],
-      "@usecases/*": ["src/usecases/*"],
+      "@features/*": ["src/features/*"],
       "@core/*": ["src/core/*"],
       "@utils/*": ["src/utils/*"]
     },
