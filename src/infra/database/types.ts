@@ -1,3 +1,3 @@
-export interface DatabaseAdapter {
-  run: () => void;
+export interface DatabasePortInterface {
+  connectToDatabase(): Promise<void>;
 }

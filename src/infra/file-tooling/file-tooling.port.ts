@@ -1,5 +1,5 @@
-import fluentFfmpegAdapter from "./fluent-ffmpeg/fluent-ffmpeg.adapter";
+import FfmpegAdapter from "./ffmpeg/ffmpeg.adapter";
 
-const FileToolingPort = fluentFfmpegAdapter;
+const FileToolingPort = FfmpegAdapter;
 
 export default FileToolingPort;

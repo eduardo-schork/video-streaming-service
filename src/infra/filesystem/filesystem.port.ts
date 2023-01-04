@@ -1,5 +1,5 @@
-import MulterStorageSystemAdapter from "./multer/multer.adapter";
+import MulterAdapter from "./multer/multer.adapter";
 
-const FileSystemPort = MulterStorageSystemAdapter;
+const FileSystemPort = MulterAdapter;
 
 export default FileSystemPort;

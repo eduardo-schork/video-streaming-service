@@ -1,5 +1,3 @@
-import { Express } from "express";
-
-export interface HttpServerAdapter {
-  run: () => void;
+export interface HttpServerPortInterface {
+  runHttpServer(): void;
 }

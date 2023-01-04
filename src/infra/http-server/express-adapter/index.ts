@@ -1,10 +1,9 @@
 import express, { Express } from "express";
 import cors from "cors";
-import { HttpServerAdapter } from "../types";
+import { HttpServerPortInterface } from "../types";
 import router from "./routes/router";
 import errorHandlerMiddleware from "./middlewares/error-handler.middleware";
 
-// TODO only enable cors on develop env
 const corsOptions = {
   origin: "*",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
@@ -12,27 +11,31 @@ const corsOptions = {
   optionsSuccessStatus: 204,
 };
 
-const registerMiddlewares = (expressServer: Express) => {
-  expressServer.use(cors(corsOptions));
-  expressServer.use(express.json());
-  expressServer.use(router);
-  expressServer.use(errorHandlerMiddleware);
-};
+class ExpressAdapter implements HttpServerPortInterface {
+  expressServer: Express;
 
-const run = () => {
-  const httpPort = process.env.HTTP_PORT;
+  constructor() {
+    const expressInstace = express();
 
-  const expressServer = express();
+    this.expressServer = expressInstace;
+  }
 
-  registerMiddlewares(expressServer);
+  _registerMiddlewares() {
+    this.expressServer.use(cors(corsOptions));
+    this.expressServer.use(express.json());
+    this.expressServer.use(router);
+    this.expressServer.use(errorHandlerMiddleware);
+  }
 
-  expressServer.listen(httpPort, () => {
-    console.log(`ExpressHttpServer app listening on port ${httpPort}`);
-  });
-};
+  runHttpServer() {
+    const httpPort = process.env.HTTP_PORT;
 
-const ExpressAdapter: HttpServerAdapter = {
-  run,
-};
+    this._registerMiddlewares();
 
-export default ExpressAdapter;
+    this.expressServer.listen(httpPort, () => {
+      console.log(`ExpressHttpServer app listening on port ${httpPort}`);
+    });
+  }
+}
+
+export default new ExpressAdapter();

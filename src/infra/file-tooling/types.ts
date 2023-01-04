@@ -1,5 +1,5 @@
 import { IMovie } from "@core/models/Movie.model";
 
-export interface IFileToolingPort {
-  takeMovieSnapshots(movie: IMovie): string[];
+export interface FileToolingPortInterface {
+  takeMovieSnapshots(movie: IMovie): Promise<string[]>;
 }

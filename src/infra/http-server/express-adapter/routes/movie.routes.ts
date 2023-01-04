@@ -7,11 +7,11 @@ import {
   handleMovieStreaming,
 } from "../controllers/movie.controller";
 
-import FileSystemAdapter from "@infra/filesystem/filesystem.port";
+import FileSystemPort from "@infra/filesystem/filesystem.port";
 
 const movieRoutes = Router();
 
-movieRoutes.post("/movie", FileSystemAdapter.uploadOne, handleCreateMovie);
+movieRoutes.post("/movie", FileSystemPort.uploadOne, handleCreateMovie);
 
 movieRoutes.get("/stream/:uid", handleMovieStreaming);
 

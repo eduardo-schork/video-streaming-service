@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
 
-export interface IFileSystemPort {
+export interface FilesystemPortInterface {
   uploadOne: RequestHandler;
 }
