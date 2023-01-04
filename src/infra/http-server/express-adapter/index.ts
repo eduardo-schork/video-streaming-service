@@ -27,7 +27,7 @@ const run = () => {
   registerMiddlewares(expressServer);
 
   expressServer.listen(httpPort, () => {
-    console.log(`expressServer app listening on port ${httpPort}`);
+    console.log(`ExpressHttpServer app listening on port ${httpPort}`);
   });
 };
 

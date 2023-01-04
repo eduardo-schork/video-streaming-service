@@ -23,3 +23,8 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [ ] Create repositories
 - [ ] Dependence injection (?)
 - [ ] Add Husky to project
+
+### To document
+
+install ffmpeg
+install mongodb

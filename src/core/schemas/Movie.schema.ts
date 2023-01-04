@@ -8,6 +8,8 @@ const movieSchema = new Schema<IMovie>({
   url: { type: String, required: true },
   title: { type: String, required: true },
   description: String,
+  categories: [String],
+  snapshots: [String],
   createdAt: { type: Number, required: true },
   createdBy: { type: String, required: true },
   updatedAt: Number,

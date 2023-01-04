@@ -1,6 +1,7 @@
 import fs from "fs";
 
-import FileSystemAdapter from "@infra/filesystem/filesystem";
+import uploadsPath from "@utils/paths/uploads.path";
+
 import findOneMovieUsecase from "./find-one-movie.usecase";
 import LoadFileError from "../errors/load-file.error";
 
@@ -17,7 +18,7 @@ async function loadMovieUsecase({
 
     const CHUNK_SIZE = 10 ** 6; // 1MB
 
-    const videoPath = FileSystemAdapter.fileStoragePath + `/${movieUrl}`;
+    const videoPath = uploadsPath + `/${movieUrl}`;
     const videoSize = fs.statSync(videoPath).size;
 
     const startBytes = Number(range?.replace(/\D/g, ""));

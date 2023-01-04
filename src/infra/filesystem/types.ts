@@ -1,6 +1,5 @@
-import { Multer } from "multer";
+import { RequestHandler } from "express";
 
-export interface FileSystemAdapter {
-  upload: Multer;
-  fileStoragePath: string;
+export interface IFileSystemPort {
+  uploadOne: RequestHandler;
 }

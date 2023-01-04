@@ -1,11 +1,11 @@
-import database from "@infra/database/database";
-import httpServer from "@infra/http-server/http-server";
+import DatabasePort from "@infra/database/database.port";
+import HttpServerPort from "@infra/http-server/http-server.port";
 
 require("dotenv").config();
 
 async function start() {
-  await database.run();
-  httpServer.run();
+  DatabasePort.run();
+  HttpServerPort.run();
 }
 
 start();

@@ -1,0 +1,21 @@
+@startuml
+
+interface Base {
+  _id: string
+  createdAt: number
+  createdBy: string
+  updatedAt?: number
+  updatedBy?: string
+  deletedAt?: number
+  deletedBy?: string
+}
+
+entity Movie<Base> {
+  url: string
+  title: string
+  description?: string
+  categories?: string[]
+  snapshots?: string[]
+}
+
+@enduml
