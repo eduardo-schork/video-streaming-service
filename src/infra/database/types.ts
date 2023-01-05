@@ -1,3 +1,5 @@
+import { Mongoose } from "mongoose";
+
 export interface DatabasePortInterface {
-  connectToDatabase(): Promise<void>;
+  connectToDatabase(): Promise<Mongoose | void>;
 }

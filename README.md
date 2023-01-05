@@ -14,6 +14,7 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [x] Local File System
 - [x] Database using MongoDB
 - [x] Streaming endpoint
+- [x] Take snapshots from video
 - [ ] CRUD videos
 - [ ] CRUD users
 - [ ] Auth provider

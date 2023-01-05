@@ -1,18 +1,19 @@
 import MovieSchema from "@core/schemas/Movie.schema";
 
 import { CreateMovieInput } from "./types";
-import FileToolingPort from "@infra/file-tooling/file-tooling.port";
 import updateMovieUsecase from "./update-movie.usecase";
-import { IMovie } from "@core/models/Movie.model";
 
-async function _takeMovieSnapshotsAndUpdate(newMovie: IMovie) {
+import FileToolingPort from "@infra/file-tooling/file-tooling.port";
+import MovieModel from "@core/models/Movie.model";
+
+async function _takeMovieSnapshotsAndUpdate(newMovie: MovieModel) {
   const snapshotsPaths = await FileToolingPort.takeMovieSnapshots(newMovie);
 
   const movieWithSnapshots = await updateMovieUsecase(newMovie._id, {
-    snapshots: snapshotsPaths,
+    _id: newMovie._id,
     url: newMovie.url,
     title: newMovie.title,
-    _id: newMovie._id,
+    snapshots: snapshotsPaths,
     createdAt: newMovie.createdAt,
     createdBy: newMovie.createdBy,
   });
@@ -26,6 +27,7 @@ async function createMovieUsecase(movieInfo: CreateMovieInput) {
     title: movieInfo.title,
     description: movieInfo.description,
     createdAt: new Date().getTime(),
+    categories: movieInfo.categories,
 
     // TODO get current user to assign into createdBy
     createdBy: "root",

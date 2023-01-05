@@ -1,5 +1,5 @@
-const { dirname } = require("path");
+import baseDirPath from "./basedir.path";
 
-const uploadsPath = dirname(require?.main?.filename) + "/storage/uploads";
+const uploadsPath = baseDirPath + "/storage/uploads";
 
 export default uploadsPath;

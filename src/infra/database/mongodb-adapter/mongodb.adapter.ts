@@ -11,8 +11,10 @@ class MongodbAdapter implements DatabasePortInterface {
       );
     }
 
-    await connect(mongodbUrl);
+    const databaseInstance = await connect(mongodbUrl);
+
     console.log("Mongodb connected with success");
+    return databaseInstance;
   }
 }
 

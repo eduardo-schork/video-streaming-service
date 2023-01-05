@@ -1,4 +1,4 @@
-export interface IBaseModel {
+export interface BaseModel {
   _id: string;
   createdAt: number;
   createdBy: string;

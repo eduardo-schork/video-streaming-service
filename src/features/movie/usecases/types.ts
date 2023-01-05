@@ -1,6 +1,6 @@
-import { IMovie } from "@core/models/Movie.model";
+import MovieModel from "@core/models/Movie.model";
 
 export type CreateMovieInput = Omit<
-  IMovie,
+  MovieModel,
   "updatedAt" | "updatedBy" | "deletedAt" | "deletedBy" | "_id"
 >;

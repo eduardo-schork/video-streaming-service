@@ -3,7 +3,7 @@ import fs from "fs";
 import uploadsPath from "@utils/paths/uploads.path";
 
 import findOneMovieUsecase from "./find-one-movie.usecase";
-import LoadFileError from "../errors/load-file.error";
+import LoadFileError from "@core/errors/load-file.error";
 
 async function loadMovieUsecase({
   range,

@@ -10,7 +10,8 @@
       "@infra/*": ["src/infra/*"],
       "@features/*": ["src/features/*"],
       "@core/*": ["src/core/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@constants/*": ["src/constants/*"]
     },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true

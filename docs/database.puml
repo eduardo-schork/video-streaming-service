@@ -18,4 +18,8 @@ entity Movie<Base> {
   snapshots?: string[]
 }
 
+entity Category<Base> {
+  name: string
+}
+
 @enduml

@@ -1,9 +1,12 @@
-import { IBaseModel } from "./Base.model";
+import { BaseModel } from "./Base.model";
+import CategoryModel from "./Category.model";
 
-export interface IMovie extends IBaseModel {
+interface MovieModel extends BaseModel {
   url: string;
   title: string;
   description?: string;
-  categories?: string[];
+  categories?: CategoryModel[];
   snapshots?: string[];
 }
+
+export default MovieModel;

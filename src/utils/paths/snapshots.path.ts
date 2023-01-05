@@ -1,5 +1,5 @@
-const { dirname } = require("path");
+import baseDirPath from "./basedir.path";
 
-const snapshotsPath = dirname(require?.main?.filename) + "/storage/snapshots";
+const snapshotsPath = baseDirPath + "/storage/snapshots";
 
 export default snapshotsPath;

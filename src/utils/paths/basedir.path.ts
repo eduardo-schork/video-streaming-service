@@ -1,5 +1,5 @@
 const { dirname } = require("path");
 
-const baseDirPath = dirname(require?.main?.filename);
+const baseDirPath = dirname(process.cwd() + "/src");
 
 export default baseDirPath;

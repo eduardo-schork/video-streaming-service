@@ -6,15 +6,16 @@ import loadMovieUsecase from "@features/movie/usecases/load-movie.usecase";
 import createMovieUsecase from "@features/movie/usecases/create-movie.usecase";
 import findOneMovieUsecase from "@features/movie/usecases/find-one-movie.usecase";
 import findAllMoviesUsecase from "@features/movie/usecases/find-all-movies.usecase";
-import MissingMovieIdError from "@features/movie/errors/missing-movie-id.error";
-import MissingMovieFileError from "@features/movie/errors/missing-movie-file.error";
-import MissingRangeHeaderError from "@features/movie/errors/missing-range-header.error";
+
+import MissingRangeHeaderError from "@core/errors/missing-range-header.error";
+import MissingParameterError from "@core/errors/missing-parameter.error";
+import MissingFileOnBodyError from "@core/errors/missing-file-on-body.error";
 
 async function handleFindOneMovie(req: Request, res: Response) {
-  const idToSearch = req.params.uid;
+  const idToSearch = req.params.id;
 
   if (!idToSearch) {
-    throw new MissingMovieIdError();
+    throw new MissingParameterError(["id"]);
   }
 
   const moviesList = await findOneMovieUsecase(idToSearch);
@@ -33,7 +34,7 @@ async function handleCreateMovie(req: Request, res: Response) {
   const reqBody = req.body as CreateMovieInput;
 
   if (!reqFilename) {
-    throw new MissingMovieFileError();
+    throw new MissingFileOnBodyError();
   }
 
   const body: CreateMovieInput = {
@@ -48,10 +49,10 @@ async function handleCreateMovie(req: Request, res: Response) {
 
 async function handleMovieStreaming(req: Request, res: Response) {
   const reqRange = req.headers.range;
-  const reqMovieId = req.params.uid;
+  const reqMovieId = req.params.id;
 
   if (!reqMovieId) {
-    throw new MissingMovieIdError();
+    throw new MissingParameterError(["id"]);
   }
 
   if (!reqRange) {

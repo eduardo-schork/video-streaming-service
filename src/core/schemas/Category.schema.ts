@@ -1,15 +1,11 @@
 import { Schema, model } from "mongoose";
-import MovieModel from "../models/Movie.model";
 
 import { generateUuid } from "@utils/uuid";
+import CategoryModel from "@core/models/Category.model";
 
-const movieSchema = new Schema<MovieModel>({
+const categorySchema = new Schema<CategoryModel>({
   _id: { type: String, default: () => generateUuid() },
-  url: { type: String, required: true },
   title: { type: String, required: true },
-  description: String,
-  categories: [Object],
-  snapshots: [String],
   createdAt: { type: Number, required: true },
   createdBy: { type: String, required: true },
   updatedAt: Number,
@@ -18,6 +14,6 @@ const movieSchema = new Schema<MovieModel>({
   deletedBy: String,
 });
 
-const MovieSchema = model<MovieModel>("Movie", movieSchema);
+const CategorySchema = model<CategoryModel>("Category", categorySchema);
 
-export default MovieSchema;
+export default CategorySchema;
