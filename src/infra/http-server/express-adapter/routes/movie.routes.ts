@@ -3,6 +3,7 @@ import { Router } from "express";
 import {
   handleCreateMovie,
   handleFindAllMovies,
+  handleFindAllMoviesGrouped,
   handleFindOneMovie,
   handleMovieStreaming,
 } from "../controllers/movie.controller";
@@ -17,6 +18,8 @@ movieRoutes.post(ApiRoutes.MOVIE, FileSystemPort.uploadOne, handleCreateMovie);
 movieRoutes.get(`${ApiRoutes.STREAM}/:id`, handleMovieStreaming);
 
 movieRoutes.get(ApiRoutes.MOVIE, handleFindAllMovies);
+
+movieRoutes.get(`${ApiRoutes.MOVIE}/grouped`, handleFindAllMoviesGrouped);
 
 movieRoutes.get(`${ApiRoutes.MOVIE}/:id`, handleFindOneMovie);
 

@@ -23,7 +23,7 @@ async function execute() {
 
     if (!categories) return null;
 
-    for (let index = 0; index < 50; index++) {
+    for (let index = 0; index < 100; index++) {
       const categoryIndex = Math.floor(Math.random() * 15);
 
       await createMovieUsecase({

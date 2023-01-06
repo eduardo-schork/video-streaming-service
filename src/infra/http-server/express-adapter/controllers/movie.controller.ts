@@ -10,6 +10,13 @@ import findAllMoviesUsecase from "@features/movie/usecases/find-all-movies.useca
 import MissingRangeHeaderError from "@core/errors/missing-range-header.error";
 import MissingParameterError from "@core/errors/missing-parameter.error";
 import MissingFileOnBodyError from "@core/errors/missing-file-on-body.error";
+import findAllMoviesGroupedUsecase from "@features/movie/usecases/find-all-movies-grouped.usecase";
+
+async function handleFindAllMoviesGrouped(req: Request, res: Response) {
+  const moviesListGrouped = await findAllMoviesGroupedUsecase();
+
+  res.status(200).send(moviesListGrouped);
+}
 
 async function handleFindOneMovie(req: Request, res: Response) {
   const idToSearch = req.params.id;
@@ -78,4 +85,5 @@ export {
   handleMovieStreaming,
   handleFindAllMovies,
   handleFindOneMovie,
+  handleFindAllMoviesGrouped,
 };
