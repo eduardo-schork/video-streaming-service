@@ -6,6 +6,6 @@ export type CreateMovieInput = Omit<
   "updatedAt" | "updatedBy" | "deletedAt" | "deletedBy" | "_id"
 >;
 
-export type MoviesGroupedByCategory = CategoryModel & {
+export type MoviesByCategory = CategoryModel & {
   movies: MovieModel[];
 };

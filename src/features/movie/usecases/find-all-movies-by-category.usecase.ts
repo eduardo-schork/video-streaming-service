@@ -1,11 +1,11 @@
-import { MoviesGroupedByCategory } from "./types";
+import { MoviesByCategory } from "./types";
 
 import MovieSchema from "@core/schemas/Movie.schema";
 
 async function findAllMoviesGroupedUsecase() {
   const allMovies = await MovieSchema.find();
 
-  let moviesGroupedByCategory: MoviesGroupedByCategory[] = [];
+  let moviesGroupedByCategory: MoviesByCategory[] = [];
 
   allMovies.map((movie) => {
     if (!movie.categories) return;

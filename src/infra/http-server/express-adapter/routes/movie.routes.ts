@@ -3,8 +3,9 @@ import { Router } from "express";
 import {
   handleCreateMovie,
   handleFindAllMovies,
-  handleFindAllMoviesGrouped,
+  handleFindAllMoviesByCategory,
   handleFindOneMovie,
+  handleFindOneMoviesByCategory,
   handleMovieStreaming,
 } from "../controllers/movie.controller";
 
@@ -19,7 +20,12 @@ movieRoutes.get(`${ApiRoutes.STREAM}/:id`, handleMovieStreaming);
 
 movieRoutes.get(ApiRoutes.MOVIE, handleFindAllMovies);
 
-movieRoutes.get(`${ApiRoutes.MOVIE}/grouped`, handleFindAllMoviesGrouped);
+movieRoutes.get(`${ApiRoutes.MOVIE}/category`, handleFindAllMoviesByCategory);
+
+movieRoutes.get(
+  `${ApiRoutes.MOVIE}/category/:id`,
+  handleFindOneMoviesByCategory
+);
 
 movieRoutes.get(`${ApiRoutes.MOVIE}/:id`, handleFindOneMovie);
 
