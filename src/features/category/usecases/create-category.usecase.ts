@@ -1,4 +1,4 @@
-import CategorySchema from "@core/schemas/Category.schema";
+import CategorySchema from "@shared/schemas/Category.schema";
 import { CreateCategoryInput } from "./types";
 
 async function createCategoryUsecase(categoryInfo: CreateCategoryInput) {

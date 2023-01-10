@@ -1,4 +1,4 @@
-import CategoryModel from "@core/models/Category.model";
+import { CategoryModel } from "@shared/models/Category.model";
 
 export type CreateCategoryInput = Omit<
   CategoryModel,

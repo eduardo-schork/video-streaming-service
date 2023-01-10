@@ -1,7 +1,7 @@
 import { Schema, model } from "mongoose";
 
-import { generateUuid } from "@utils/uuid";
-import CategoryModel from "@core/models/Category.model";
+import { generateUuid } from "src/utils/uuid";
+import { CategoryModel } from "@shared/models/Category.model";
 
 const categorySchema = new Schema<CategoryModel>({
   _id: { type: String, default: () => generateUuid() },
@@ -14,6 +14,6 @@ const categorySchema = new Schema<CategoryModel>({
   deletedBy: String,
 });
 
-const CategorySchema = model<CategoryModel>("Category", categorySchema);
+const CategorySchema = model<CategoryModel>("category", categorySchema);
 
 export default CategorySchema;

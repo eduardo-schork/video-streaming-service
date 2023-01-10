@@ -1,6 +1,6 @@
-import MovieSchema from "@core/schemas/Movie.schema";
+import MovieSchema from "@shared/schemas/Movie.schema";
 
-import MovieModel from "@core/models/Movie.model";
+import { MovieModel } from "@shared/models/Movie.model";
 
 async function updateMovieUsecase(movieId: string, newMovieInfo: MovieModel) {
   await MovieSchema.findByIdAndUpdate(movieId, newMovieInfo);

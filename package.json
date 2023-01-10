@@ -45,6 +45,8 @@
     "lint": "eslint . --ext .ts",
     "test": "jest",
     "drop-database": ". ./.env && npx ts-node ./src/infra/database/mongodb-adapter/scripts/drop-database.script.ts",
-    "seed-database": ". ./.env && npx ts-node -r tsconfig-paths/register ./src/infra/database/mongodb-adapter/scripts/seed-database.script.ts"
+    "seed-database": ". ./.env && npx ts-node -r tsconfig-paths/register ./src/infra/database/mongodb-adapter/scripts/seed-database.script.ts",
+    "clean-snapshots": "rm -rf storage/snapshots/*",
+    "setup-database:dev": "yarn clean-snapshots && yarn drop-database && yarn seed-database"
   }
 }

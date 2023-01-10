@@ -1,10 +1,10 @@
-import MovieSchema from "@core/schemas/Movie.schema";
+import MovieSchema from "@shared/schemas/Movie.schema";
 
-import { CreateMovieInput } from "./types";
+import { CreateMovieInput } from "../types";
 import updateMovieUsecase from "./update-movie.usecase";
 
 import FileToolingPort from "@infra/file-tooling/file-tooling.port";
-import MovieModel from "@core/models/Movie.model";
+import { MovieModel } from "@shared/models/Movie.model";
 
 async function _takeMovieSnapshotsAndUpdate(newMovie: MovieModel) {
   const snapshotsPaths = await FileToolingPort.takeMovieSnapshots(newMovie);

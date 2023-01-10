@@ -1,4 +1,4 @@
-import HttpException from "@core/errors/http-exception";
+import HttpException from "@shared/errors/http-exception";
 
 class MissingRangeHeaderError extends HttpException {
   constructor() {

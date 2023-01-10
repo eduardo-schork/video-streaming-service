@@ -1,15 +1,16 @@
 // TODO try to use "fluent-ffmpeg" lib
 import ffmpeg from "ffmpeg";
 
-import MovieModel from "@core/models/Movie.model";
-
-import { generateUuid } from "@utils/uuid";
-import uploadsPath from "@utils/paths/uploads.path";
-import snapshotsPath from "@utils/paths/snapshots.path";
+import { MovieModel } from "@shared/models/Movie.model";
 import { FileToolingPortInterface } from "../types";
+
+import { generateUuid } from "src/utils/uuid";
+import uploadsPath from "src/utils/paths/uploads.path";
+import snapshotsPath from "src/utils/paths/snapshots.path";
 
 class FfmpegAdapter implements FileToolingPortInterface {
   async takeMovieSnapshots(movie: MovieModel) {
+    debugger;
     const moviePath = uploadsPath + "/" + movie.url;
     const snapshotsStoragePath = snapshotsPath + "/" + movie._id;
 

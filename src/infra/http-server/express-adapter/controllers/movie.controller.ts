@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 
-import { CreateMovieInput } from "@features/movie/usecases/types";
+import { CreateMovieInput } from "@features/movie/types";
 
 import loadMovieUsecase from "@features/movie/usecases/load-movie.usecase";
 import createMovieUsecase from "@features/movie/usecases/create-movie.usecase";
 import findOneMovieUsecase from "@features/movie/usecases/find-one-movie.usecase";
 import findAllMoviesUsecase from "@features/movie/usecases/find-all-movies.usecase";
 
-import MissingRangeHeaderError from "@core/errors/missing-range-header.error";
-import MissingParameterError from "@core/errors/missing-parameter.error";
-import MissingFileOnBodyError from "@core/errors/missing-file-on-body.error";
-import findAllMoviesGroupedUsecase from "@features/movie/usecases/find-all-movies-by-category.usecase";
-import findOneMoviesByCategory from "@features/movie/usecases/find-one-movies-by-category.usecase";
+import MissingRangeHeaderError from "@shared/errors/missing-range-header.error";
+import MissingParameterError from "@shared/errors/missing-parameter.error";
+import MissingFileOnBodyError from "@shared/errors/missing-file-on-body.error";
+import findAllMoviesGroupedUsecase from "@features/movie/movies-by-category/find-all-movies-by-category.usecase";
+import findOneMoviesByCategory from "@features/movie/movies-by-category/find-one-movies-by-category.usecase";
 
 async function handleFindOneMoviesByCategory(req: Request, res: Response) {
   const idToSearch = req.params.id;
@@ -38,13 +38,14 @@ async function handleFindOneMovie(req: Request, res: Response) {
     throw new MissingParameterError(["id"]);
   }
 
-  const moviesList = await findOneMovieUsecase(idToSearch);
+  // TODO transfrom to enum based on model: "_id"
+  const moviesList = await findOneMovieUsecase("_id", idToSearch);
 
   res.status(200).send(moviesList);
 }
 
 async function handleFindAllMovies(req: Request, res: Response) {
-  const moviesList = await findAllMoviesUsecase();
+  const moviesList = await findAllMoviesUsecase({ filter: null });
 
   res.status(200).send(moviesList);
 }

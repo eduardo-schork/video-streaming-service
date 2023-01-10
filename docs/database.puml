@@ -14,12 +14,20 @@ entity Movie<Base> {
   url: string
   title: string
   description?: string
-  categories?: string[]
+  categories?: Category<ID>[]
   snapshots?: string[]
 }
 
 entity Category<Base> {
   name: string
 }
+
+entity Comment<Base>{
+  movie: Movie<ID>
+  parent: Comment<ID>
+  text: string
+}
+
+
 
 @enduml

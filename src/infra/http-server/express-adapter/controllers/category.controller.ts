@@ -4,7 +4,7 @@ import findOneCategoryUsecase from "@features/category/usecases/find-one-categor
 import findAllCategoriesUsecase from "@features/category/usecases/find-all-categories.usecase";
 import createCategoryUsecase from "@features/category/usecases/create-category.usecase";
 
-import MissingParameterError from "@core/errors/missing-parameter.error";
+import MissingParameterError from "@shared/errors/missing-parameter.error";
 
 async function handleFindOneCategory(req: Request, res: Response) {
   const idToSearch = req.params.id;
@@ -13,7 +13,7 @@ async function handleFindOneCategory(req: Request, res: Response) {
     throw new MissingParameterError(["id"]);
   }
 
-  const category = await findOneCategoryUsecase(idToSearch);
+  const category = await findOneCategoryUsecase("_id", idToSearch);
 
   res.status(200).send(category);
 }

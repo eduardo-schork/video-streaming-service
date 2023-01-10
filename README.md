@@ -8,14 +8,14 @@ This app contains a service for video streaming, built with `TypeScript` and `Ex
 
 The app also use `Prettier`, `ESlint` and `Jest` for testing.
 
-### Roadmap
+### TODO
 
 - [x] Http server using Express
 - [x] Local File System
 - [x] Database using MongoDB
 - [x] Streaming endpoint
 - [x] Take snapshots from video
-- [ ] CRUD videos
+- [x] CRUD videos
 - [ ] CRUD users
 - [ ] Auth provider
 - [ ] Transform into monorepo
@@ -24,8 +24,10 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [ ] Create repositories
 - [ ] Dependence injection (?)
 - [ ] Add Husky to project
+- [ ] Typing of all output normalized data
+- [ ] Optimize usecases
 
 ### To document
 
-install ffmpeg
-install mongodb
+- install ffmpeg
+- install mongodb
