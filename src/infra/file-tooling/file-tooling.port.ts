@@ -1,4 +1,4 @@
-import FfmpegAdapter from "./ffmpeg/ffmpeg.adapter";
+import FfmpegAdapter from './ffmpeg/ffmpeg.adapter';
 
 const FileToolingPort = FfmpegAdapter;
 

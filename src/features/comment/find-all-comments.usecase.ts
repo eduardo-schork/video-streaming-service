@@ -1,16 +1,15 @@
-import CommentSchema from "@shared/schemas/Comment.schema";
+import CommentSchema from '@shared/schemas/Comment.schema';
 
-import { CommentModel, NormalizedComment } from "@shared/models/Comment.model";
+import { CommentModel, NormalizedComment } from '@shared/models/Comment.model';
 
-import findOneCommentUsecase from "./find-one-comment.usecase";
-
-import { asyncMap } from "@utils/async-map.util";
-import { FilterProps, buildFilterObject } from "@utils/filter/filter.util";
+import asyncMap from '@utils/async-map.util';
+import { FilterProps, buildFilterObject } from '@utils/filter/filter.util';
+import findOneCommentUsecase from './find-one-comment.usecase';
 
 async function findAllCommentsUsecase({ filter }: FilterProps) {
   let allComments = [];
 
-  if (filter) {
+  if (filter != null) {
     const filterObject = buildFilterObject({ filter });
 
     allComments = await CommentSchema.find(filterObject as CommentModel);
@@ -18,12 +17,12 @@ async function findAllCommentsUsecase({ filter }: FilterProps) {
     allComments = await CommentSchema.find();
   }
 
-  const normalizedComments = await asyncMap(allComments, async (comment) => {
+  const normalizedComments = await asyncMap(allComments, async comment => {
     if (!comment.parentId) {
       return comment.toJSON();
     }
 
-    const parentComment = await findOneCommentUsecase("_id", comment.parentId);
+    const parentComment = await findOneCommentUsecase('_id', comment.parentId);
     return { ...comment.toJSON(), parent: parentComment };
   });
 

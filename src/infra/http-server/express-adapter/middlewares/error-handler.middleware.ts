@@ -1,11 +1,11 @@
-import HttpException from "@shared/errors/http-exception";
-import { NextFunction, Request, Response } from "express";
+import HttpException from '@shared/errors/http-exception';
+import { NextFunction, Request, Response } from 'express';
 
 function errorHandlerMiddleware(
   error: Error,
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ) {
   if (error instanceof HttpException) {
     return response.status(error.statusCode).send({
@@ -14,7 +14,7 @@ function errorHandlerMiddleware(
     });
   }
   return response.status(500).send({
-    status: "error",
+    status: 'error',
     message: `Internal server error - ${error.message}`,
   });
 }

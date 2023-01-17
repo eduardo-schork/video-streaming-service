@@ -1,7 +1,7 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
-import { generateUuid } from "src/utils/uuid";
-import { CommentModel } from "@shared/models/Comment.model";
+import generateUuid from '@utils/uuid';
+import { CommentModel } from '@shared/models/Comment.model';
 
 const commentSchema = new Schema<CommentModel>({
   _id: { type: String, default: () => generateUuid() },
@@ -16,6 +16,6 @@ const commentSchema = new Schema<CommentModel>({
   deletedBy: String,
 });
 
-const CommentSchema = model<CommentModel>("comment", commentSchema);
+const CommentSchema = model<CommentModel>('comment', commentSchema);
 
 export default CommentSchema;

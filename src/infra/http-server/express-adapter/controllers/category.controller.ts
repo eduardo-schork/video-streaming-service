@@ -1,19 +1,19 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import findOneCategoryUsecase from "@features/category/usecases/find-one-category.usecase";
-import findAllCategoriesUsecase from "@features/category/usecases/find-all-categories.usecase";
-import createCategoryUsecase from "@features/category/usecases/create-category.usecase";
+import findOneCategoryUsecase from '@features/category/usecases/find-one-category.usecase';
+import findAllCategoriesUsecase from '@features/category/usecases/find-all-categories.usecase';
+import createCategoryUsecase from '@features/category/usecases/create-category.usecase';
 
-import MissingParameterError from "@shared/errors/missing-parameter.error";
+import MissingParameterError from '@shared/errors/missing-parameter.error';
 
 async function handleFindOneCategory(req: Request, res: Response) {
   const idToSearch = req.params.id;
 
   if (!idToSearch) {
-    throw new MissingParameterError(["id"]);
+    throw new MissingParameterError(['id']);
   }
 
-  const category = await findOneCategoryUsecase("_id", idToSearch);
+  const category = await findOneCategoryUsecase('_id', idToSearch);
 
   res.status(200).send(category);
 }

@@ -1,8 +1,8 @@
-import HttpException from "@shared/errors/http-exception";
+import HttpException from '@shared/errors/http-exception';
 
 class MissingFileOnBodyError extends HttpException {
   constructor() {
-    super(400, "Missing file on request body", []);
+    super(400, 'Missing file on request body', []);
   }
 }
 

@@ -1,8 +1,8 @@
-import HttpException from "@shared/errors/http-exception";
+import HttpException from '@shared/errors/http-exception';
 
 class LoadFileError extends HttpException {
-  constructor(errors: any[]) {
-    super(500, "Error trying to load file", errors);
+  constructor(errors: unknown[]) {
+    super(500, 'Error trying to load file', errors);
   }
 }
 

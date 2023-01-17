@@ -1,4 +1,4 @@
-import { BaseModel } from "./Base.model";
+import { BaseModel } from './Base.model';
 
 export interface CommentModel extends BaseModel {
   text: string;

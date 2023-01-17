@@ -1,7 +1,8 @@
-import DatabasePort from "@infra/database/database.port";
-import HttpServerPort from "@infra/http-server/http-server.port";
+import DatabasePort from '@infra/database/database.port';
+import HttpServerPort from '@infra/http-server/http-server.port';
 
-require("dotenv").config();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 
 async function start() {
   DatabasePort.connectToDatabase();

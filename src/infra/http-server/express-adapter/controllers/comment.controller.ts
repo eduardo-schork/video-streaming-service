@@ -1,19 +1,19 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
-import MissingParameterError from "@shared/errors/missing-parameter.error";
-import createCommentUsecase from "@features/comment/create-comment.usecase";
-import findOneCommentUsecase from "@features/comment/find-one-comment.usecase";
-import findAllCommentsUsecase from "@features/comment/find-all-comments.usecase";
-import findAllCommentsByMovieUsecase from "@features/comment/find-all-comments-by-movie.usecase";
+import MissingParameterError from '@shared/errors/missing-parameter.error';
+import createCommentUsecase from '@features/comment/create-comment.usecase';
+import findOneCommentUsecase from '@features/comment/find-one-comment.usecase';
+import findAllCommentsUsecase from '@features/comment/find-all-comments.usecase';
+import findAllCommentsByMovieUsecase from '@features/comment/find-all-comments-by-movie.usecase';
 
 async function handleFindOneComment(req: Request, res: Response) {
   const idToSearch = req.params.id;
 
   if (!idToSearch) {
-    throw new MissingParameterError(["id"]);
+    throw new MissingParameterError(['id']);
   }
 
-  const category = await findOneCommentUsecase("_id", idToSearch);
+  const category = await findOneCommentUsecase('_id', idToSearch);
 
   res.status(200).send(category);
 }
@@ -22,7 +22,7 @@ async function handleFindAllCommentsByMovie(req: Request, res: Response) {
   const idToSearch = req.params.id;
 
   if (!idToSearch) {
-    throw new MissingParameterError(["id"]);
+    throw new MissingParameterError(['id']);
   }
 
   const category = await findAllCommentsByMovieUsecase(idToSearch);

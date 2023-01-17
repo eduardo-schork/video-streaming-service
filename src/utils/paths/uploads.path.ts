@@ -1,5 +1,5 @@
-import baseDirPath from "./basedir.path";
+import baseDirPath from './basedir.path';
 
-const uploadsPath = baseDirPath + "/storage/uploads";
+const uploadsPath = `${baseDirPath}/storage/uploads`;
 
 export default uploadsPath;

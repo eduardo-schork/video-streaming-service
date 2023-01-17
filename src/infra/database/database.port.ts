@@ -1,4 +1,4 @@
-import MongodbAdapter from "./mongodb-adapter/mongodb.adapter";
+import MongodbAdapter from './mongodb-adapter/mongodb.adapter';
 
 const DatabasePort = MongodbAdapter;
 

@@ -1,5 +1,5 @@
-import { connect } from "mongoose";
-import { DatabasePortInterface } from "../types";
+import { connect } from 'mongoose';
+import { DatabasePortInterface } from '../types';
 
 class MongodbAdapter implements DatabasePortInterface {
   async connectToDatabase() {
@@ -7,13 +7,13 @@ class MongodbAdapter implements DatabasePortInterface {
 
     if (!mongodbUrl) {
       return console.log(
-        "Could not connect to MongoDB: database url is missing"
+        'Could not connect to MongoDB: database url is missing',
       );
     }
 
     const databaseInstance = await connect(mongodbUrl);
 
-    console.log("Mongodb connected with success");
+    console.log('Mongodb connected with success');
     return databaseInstance;
   }
 }

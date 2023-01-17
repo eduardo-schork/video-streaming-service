@@ -1,5 +1,5 @@
-import baseDirPath from "./basedir.path";
+import baseDirPath from './basedir.path';
 
-const snapshotsPath = baseDirPath + "/storage/snapshots";
+const snapshotsPath = `${baseDirPath}/storage/snapshots`;
 
 export default snapshotsPath;

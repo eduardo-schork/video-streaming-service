@@ -1,11 +1,11 @@
-import { Router } from "express";
+import { Router } from 'express';
 
+import ApiRoutes from '@constants/api-routes';
 import {
   handleCreateCategory,
   handleFindAllCategories,
   handleFindOneCategory,
-} from "../controllers/category.controller";
-import ApiRoutes from "@constants/api-routes";
+} from '../controllers/category.controller';
 
 const categoryRoutes = Router();
 

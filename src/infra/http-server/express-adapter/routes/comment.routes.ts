@@ -1,12 +1,12 @@
-import { Router } from "express";
+import { Router } from 'express';
 
-import ApiRoutes from "@constants/api-routes";
+import ApiRoutes from '@constants/api-routes';
 import {
   handleCreateComment,
   handleFindAllComments,
   handleFindAllCommentsByMovie,
   handleFindOneComment,
-} from "../controllers/comment.controller";
+} from '../controllers/comment.controller';
 
 const commentRoutes = Router();
 
@@ -16,7 +16,7 @@ commentRoutes.get(`${ApiRoutes.COMMENT}/:id`, handleFindOneComment);
 
 commentRoutes.get(
   `${ApiRoutes.COMMENT}/movie/:id`,
-  handleFindAllCommentsByMovie
+  handleFindAllCommentsByMovie,
 );
 
 commentRoutes.get(ApiRoutes.COMMENT, handleFindAllComments);

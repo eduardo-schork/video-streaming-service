@@ -1,5 +1,5 @@
-import { BaseModel } from "./Base.model";
-import { CategoryModel } from "./Category.model";
+import { BaseModel } from './Base.model';
+import { CategoryModel } from './Category.model';
 
 export interface MovieModel extends BaseModel {
   url: string;

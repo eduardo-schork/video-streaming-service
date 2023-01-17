@@ -1,5 +1,5 @@
-import CategorySchema from "@shared/schemas/Category.schema";
-import { CreateCategoryInput } from "./types";
+import CategorySchema from '@shared/schemas/Category.schema';
+import { CreateCategoryInput } from './types';
 
 async function createCategoryUsecase(categoryInfo: CreateCategoryInput) {
   const newCategory = new CategorySchema({
@@ -7,7 +7,7 @@ async function createCategoryUsecase(categoryInfo: CreateCategoryInput) {
 
     createdAt: new Date().getTime(),
     // TODO get current user to assign into createdBy
-    createdBy: "root",
+    createdBy: 'root',
   });
 
   await newCategory.save();

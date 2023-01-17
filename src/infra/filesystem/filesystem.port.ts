@@ -1,4 +1,4 @@
-import MulterAdapter from "./multer/multer.adapter";
+import MulterAdapter from './multer/multer.adapter';
 
 const FileSystemPort = MulterAdapter;
 

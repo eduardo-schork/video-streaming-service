@@ -1,5 +1,7 @@
-import { Router } from "express";
+import { Router } from 'express';
 
+import FileSystemPort from '@infra/filesystem/filesystem.port';
+import ApiRoutes from '@constants/api-routes';
 import {
   handleCreateMovie,
   handleFindAllMovies,
@@ -7,10 +9,7 @@ import {
   handleFindOneMovie,
   handleFindOneMoviesByCategory,
   handleMovieStreaming,
-} from "../controllers/movie.controller";
-
-import FileSystemPort from "@infra/filesystem/filesystem.port";
-import ApiRoutes from "@constants/api-routes";
+} from '../controllers/movie.controller';
 
 const movieRoutes = Router();
 
@@ -24,7 +23,7 @@ movieRoutes.get(`${ApiRoutes.MOVIE}/category`, handleFindAllMoviesByCategory);
 
 movieRoutes.get(
   `${ApiRoutes.MOVIE}/category/:id`,
-  handleFindOneMoviesByCategory
+  handleFindOneMoviesByCategory,
 );
 
 movieRoutes.get(`${ApiRoutes.MOVIE}/:id`, handleFindOneMovie);

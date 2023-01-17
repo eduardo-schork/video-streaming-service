@@ -1,9 +1,9 @@
-import fs from "fs";
+import fs from 'fs';
 
-import uploadsPath from "src/utils/paths/uploads.path";
+import uploadsPath from '@utils/paths/uploads.path';
 
-import findOneMovieUsecase from "./find-one-movie.usecase";
-import LoadFileError from "@shared/errors/load-file.error";
+import LoadFileError from '@shared/errors/load-file.error';
+import findOneMovieUsecase from './find-one-movie.usecase';
 
 async function loadMovieUsecase({
   range,
@@ -13,15 +13,15 @@ async function loadMovieUsecase({
   movieId: string;
 }) {
   try {
-    const movieObject = await findOneMovieUsecase("_id", movieId);
+    const movieObject = await findOneMovieUsecase('_id', movieId);
     const movieUrl = movieObject?.url;
 
     const CHUNK_SIZE = 10 ** 6; // 1MB
 
-    const videoPath = uploadsPath + `/${movieUrl}`;
+    const videoPath = `${uploadsPath}/${movieUrl}`;
     const videoSize = fs.statSync(videoPath).size;
 
-    const startBytes = Number(range?.replace(/\D/g, ""));
+    const startBytes = Number(range?.replace(/\D/g, ''));
     const endBytes = Math.min(startBytes + CHUNK_SIZE, videoSize - 1);
 
     const contentLength = endBytes - startBytes + 1;

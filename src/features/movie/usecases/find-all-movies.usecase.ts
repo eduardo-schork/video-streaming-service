@@ -1,36 +1,33 @@
-import { NormalizedMovie } from "@shared/models/Movie.model";
-import MovieSchema from "@shared/schemas/Movie.schema";
-import findOneCategoryUsecase from "@features/category/usecases/find-one-category.usecase";
-import { asyncMap } from "src/utils/async-map.util";
+import { NormalizedMovie } from '@shared/models/Movie.model';
+import MovieSchema from '@shared/schemas/Movie.schema';
+import findOneCategoryUsecase from '@features/category/usecases/find-one-category.usecase';
+import asyncMap from '@utils/async-map.util';
 
-type FindAllMoviesUsecaseProps = {
+interface FindAllMoviesUsecaseProps {
   filter?: {
     key: string;
     value: string;
   } | null;
-};
+}
 
 async function findAllMoviesUsecase({ filter }: FindAllMoviesUsecaseProps) {
   let allMovies = [];
 
-  if (filter) {
+  if (filter != null) {
     allMovies = await MovieSchema.find({ [`${filter.key}`]: filter.value });
   } else {
     allMovies = await MovieSchema.find();
   }
 
-  const normalizedMovies = await asyncMap(allMovies, async (movie) => {
-    if (!movie.categories) {
+  const normalizedMovies = await asyncMap(allMovies, async movie => {
+    if (movie.categories == null) {
       return movie.toJSON();
     }
 
-    const categoriesObjects = await asyncMap(
-      movie?.categories,
-      async (item) => {
-        const categoryObject = await findOneCategoryUsecase("_id", item);
-        return categoryObject?.toJSON();
-      }
-    );
+    const categoriesObjects = await asyncMap(movie?.categories, async item => {
+      const categoryObject = await findOneCategoryUsecase('_id', item);
+      return categoryObject?.toJSON();
+    });
 
     return { ...movie.toJSON(), categories: categoriesObjects };
   });

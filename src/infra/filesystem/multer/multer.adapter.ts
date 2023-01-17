@@ -1,22 +1,21 @@
-import multer from "multer";
+import multer from 'multer';
 
-import { FilesystemPortInterface } from "../types";
-
-import uploadsPath from "src/utils/paths/uploads.path";
-import { generateUuid } from "src/utils/uuid";
+import uploadsPath from '@utils/paths/uploads.path';
+import generateUuid from '@utils/uuid';
+import { FilesystemPortInterface } from '../types';
 
 const storage = multer.diskStorage({
-  destination: function (req, file, callback) {
+  destination(req, file, callback) {
     callback(null, uploadsPath);
   },
-  filename: function (req, file, callback) {
+  filename(req, file, callback) {
     const uniqueSuffix = generateUuid();
 
     callback(null, `${uniqueSuffix}${file.originalname}`);
   },
 });
 
-const multerUploadOne = multer({ storage: storage }).single("file");
+const multerUploadOne = multer({ storage }).single('file');
 
 const MulterStorageSystemAdapter: FilesystemPortInterface = {
   uploadOne: multerUploadOne,

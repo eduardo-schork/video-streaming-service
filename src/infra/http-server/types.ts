@@ -1,3 +1,3 @@
 export interface HttpServerPortInterface {
-  runHttpServer(): void;
+  runHttpServer: () => void;
 }

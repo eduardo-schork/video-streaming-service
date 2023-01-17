@@ -1,4 +1,4 @@
-import ExpressAdapter from "./express-adapter";
+import ExpressAdapter from './express-adapter';
 
 const HttpServerPort = ExpressAdapter;
 

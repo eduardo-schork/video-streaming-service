@@ -1,20 +1,19 @@
 // TODO try to use "fluent-ffmpeg" lib
-import ffmpeg from "ffmpeg";
+import Ffmpeg from 'ffmpeg';
 
-import { MovieModel } from "@shared/models/Movie.model";
-import { FileToolingPortInterface } from "../types";
+import { MovieModel } from '@shared/models/Movie.model';
 
-import { generateUuid } from "src/utils/uuid";
-import uploadsPath from "src/utils/paths/uploads.path";
-import snapshotsPath from "src/utils/paths/snapshots.path";
+import uploadsPath from '@utils/paths/uploads.path';
+import snapshotsPath from '@utils/paths/snapshots.path';
+import generateUuid from '@utils/uuid';
+import { FileToolingPortInterface } from '../types';
 
 class FfmpegAdapter implements FileToolingPortInterface {
   async takeMovieSnapshots(movie: MovieModel) {
-    debugger;
-    const moviePath = uploadsPath + "/" + movie.url;
-    const snapshotsStoragePath = snapshotsPath + "/" + movie._id;
+    const moviePath = `${uploadsPath}/${movie.url}`;
+    const snapshotsStoragePath = `${snapshotsPath}/${movie._id}`;
 
-    const loadedVideo = await new ffmpeg(moviePath);
+    const loadedVideo = await new Ffmpeg(moviePath);
 
     const extractFrameConfig = {
       number: 4,
@@ -26,11 +25,11 @@ class FfmpegAdapter implements FileToolingPortInterface {
 
     const generatedSnapshotsPaths = await loadedVideo.fnExtractFrameToJPG(
       snapshotsStoragePath,
-      extractFrameConfig
+      extractFrameConfig,
     );
 
-    const normalizedPaths = generatedSnapshotsPaths.map((path) =>
-      path.substring(path.lastIndexOf("/") + 1)
+    const normalizedPaths = generatedSnapshotsPaths.map(path =>
+      path.substring(path.lastIndexOf('/') + 1),
     );
 
     return normalizedPaths;

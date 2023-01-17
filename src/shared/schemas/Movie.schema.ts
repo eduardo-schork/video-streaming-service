@@ -1,7 +1,6 @@
-import { Schema, model } from "mongoose";
-import { MovieModel } from "../models/Movie.model";
-
-import { generateUuid } from "src/utils/uuid";
+import generateUuid from '@utils/uuid';
+import { Schema, model } from 'mongoose';
+import { MovieModel } from '../models/Movie.model';
 
 const movieSchema = new Schema<MovieModel>({
   _id: { type: String, default: () => generateUuid() },
@@ -18,6 +17,6 @@ const movieSchema = new Schema<MovieModel>({
   deletedBy: String,
 });
 
-const MovieSchema = model<MovieModel>("movie", movieSchema);
+const MovieSchema = model<MovieModel>('movie', movieSchema);
 
 export default MovieSchema;

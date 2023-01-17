@@ -1,12 +1,11 @@
-import MovieSchema from "@shared/schemas/Movie.schema";
+import MovieSchema from '@shared/schemas/Movie.schema';
 
-import { CreateMovieInput } from "../types";
-import updateMovieUsecase from "./update-movie.usecase";
+import FileToolingPort from '@infra/file-tooling/file-tooling.port';
+import { MovieModel } from '@shared/models/Movie.model';
+import { CreateMovieInput } from '../types';
+import updateMovieUsecase from './update-movie.usecase';
 
-import FileToolingPort from "@infra/file-tooling/file-tooling.port";
-import { MovieModel } from "@shared/models/Movie.model";
-
-async function _takeMovieSnapshotsAndUpdate(newMovie: MovieModel) {
+async function takeMovieSnapshotsAndUpdate(newMovie: MovieModel) {
   const snapshotsPaths = await FileToolingPort.takeMovieSnapshots(newMovie);
 
   const movieWithSnapshots = await updateMovieUsecase(newMovie._id, {
@@ -30,12 +29,12 @@ async function createMovieUsecase(movieInfo: CreateMovieInput) {
     categories: movieInfo.categories,
 
     // TODO get current user to assign into createdBy
-    createdBy: "root",
+    createdBy: 'root',
   });
 
   await newMovie.save();
 
-  const movieWithSnapshots = await _takeMovieSnapshotsAndUpdate(newMovie);
+  const movieWithSnapshots = await takeMovieSnapshotsAndUpdate(newMovie);
 
   return movieWithSnapshots;
 }

@@ -1,5 +1,5 @@
-import CommentSchema from "@shared/schemas/Comment.schema";
-import { CreateCommentInput } from "./types";
+import CommentSchema from '@shared/schemas/Comment.schema';
+import { CreateCommentInput } from './types';
 
 async function createCommentUsecase(createCommentInput: CreateCommentInput) {
   const newComment = new CommentSchema({
@@ -9,7 +9,7 @@ async function createCommentUsecase(createCommentInput: CreateCommentInput) {
 
     createdAt: new Date().getTime(),
     // TODO get current user to assign into createdBy
-    createdBy: "root",
+    createdBy: 'root',
   });
 
   await newComment.save();
