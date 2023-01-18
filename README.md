@@ -26,6 +26,7 @@ The app also use `Prettier`, `ESlint` and `Jest` for testing.
 - [ ] Add Husky to project
 - [ ] Typing of all output normalized data
 - [ ] Optimize usecases
+- [ ] Optimize Dockerfile
 
 ### To document
 

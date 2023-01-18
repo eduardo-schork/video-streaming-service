@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - db:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+
+  web:
+    container_name: video-streaming-service
+    depends_on:
+      - mongodb
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - '3001'
+    ports:
+      - '3001:3001'
+    stdin_open: true
+    tty: true
+    command: yarn start
+
+volumes:
+  db:

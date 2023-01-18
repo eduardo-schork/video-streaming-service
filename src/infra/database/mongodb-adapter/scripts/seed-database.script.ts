@@ -78,10 +78,7 @@ async function execute() {
     for (let index = 0; index < 100; index++) {
       const categoryIndex = Math.floor(Math.random() * 15);
 
-      console.log({ categoryIndex });
       const sortedCategory = categories[categoryIndex];
-
-      console.log({ sortedCategory });
 
       const newMovie = (await createMovieUsecase({
         url: 'test-video.mp4',
