@@ -5,7 +5,10 @@ RUN apk add ffmpeg
 
 WORKDIR /app
 
-COPY . .
+COPY yarn*.lock .
 
 RUN yarn install
+
+COPY . .
+
 

@@ -6,9 +6,7 @@ export interface CommentModel extends BaseModel {
   parentId?: string;
 }
 
-export interface NormalizedComment extends BaseModel {
-  text: string;
-  movieId: string;
-  parentId?: string;
+export type NormalizedComment = CommentModel & {
   parent?: NormalizedComment;
-}
+  subComments?: NormalizedComment[];
+};

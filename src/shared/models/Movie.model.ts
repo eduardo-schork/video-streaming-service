@@ -9,10 +9,6 @@ export interface MovieModel extends BaseModel {
   categories?: string[];
 }
 
-export interface NormalizedMovie extends BaseModel {
-  url: string;
-  title: string;
-  description?: string;
-  snapshots?: string[];
+export type NormalizedMovie = Omit<MovieModel, 'categories'> & {
   categories?: CategoryModel[];
-}
+};

@@ -1,11 +1,13 @@
 import MovieSchema from '@shared/schemas/Movie.schema';
 
 import FileToolingPort from '@infra/file-tooling/file-tooling.port';
-import { MovieModel } from '@shared/models/Movie.model';
+import { MovieModel, NormalizedMovie } from '@shared/models/Movie.model';
 import { CreateMovieInput } from '../types';
 import updateMovieUsecase from './update-movie.usecase';
 
-async function takeMovieSnapshotsAndUpdate(newMovie: MovieModel) {
+async function takeMovieSnapshotsAndUpdate(
+  newMovie: MovieModel,
+): Promise<NormalizedMovie> {
   const snapshotsPaths = await FileToolingPort.takeMovieSnapshots(newMovie);
 
   const movieWithSnapshots = await updateMovieUsecase(newMovie._id, {

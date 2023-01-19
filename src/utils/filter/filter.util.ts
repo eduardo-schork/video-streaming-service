@@ -1,10 +1,10 @@
-export interface FilterItem {
+export type FilterItem = {
   key?: string;
   value?: string;
-}
-export interface FilterProps {
+};
+export type FilterProps = {
   filter?: FilterItem[] | null;
-}
+};
 
 export const buildFilterObject = ({ filter }: { filter?: FilterItem[] }) => {
   let filterObject = {};

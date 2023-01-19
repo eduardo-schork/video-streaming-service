@@ -1,7 +1,10 @@
 import CommentSchema from '@shared/schemas/Comment.schema';
+import { NormalizedComment } from '@shared/models/Comment.model';
 import { CreateCommentInput } from './types';
 
-async function createCommentUsecase(createCommentInput: CreateCommentInput) {
+async function createCommentUsecase(
+  createCommentInput: CreateCommentInput,
+): Promise<NormalizedComment> {
   const newComment = new CommentSchema({
     text: createCommentInput?.text,
     parentId: createCommentInput?.parentId,
@@ -14,7 +17,7 @@ async function createCommentUsecase(createCommentInput: CreateCommentInput) {
 
   await newComment.save();
 
-  return newComment;
+  return newComment.toJSON() as NormalizedComment;
 }
 
 export default createCommentUsecase;

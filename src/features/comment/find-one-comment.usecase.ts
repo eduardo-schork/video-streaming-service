@@ -1,7 +1,10 @@
 import { NormalizedComment } from '@shared/models/Comment.model';
 import CommentSchema from '@shared/schemas/Comment.schema';
 
-async function findOneCommentUsecase(key: string, value: string) {
+async function findOneCommentUsecase(
+  key: string,
+  value: string,
+): Promise<NormalizedComment> {
   const comment = await CommentSchema.findOne({ [`${key}`]: value });
 
   if (comment?.parentId) {

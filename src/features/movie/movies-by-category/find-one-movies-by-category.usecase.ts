@@ -7,7 +7,8 @@ async function findOneMoviesByCategory(id: string) {
   const categoryObject = await findOneCategoryUsecase('_id', id);
 
   const filteredMovies = await findAllMoviesUsecase({
-    filter: { key: 'categories', value: id },
+    key: 'categories',
+    value: id,
   });
 
   const returnData = {

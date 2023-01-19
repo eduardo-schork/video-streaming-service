@@ -2,15 +2,11 @@ import { NormalizedMovie } from '@shared/models/Movie.model';
 import MovieSchema from '@shared/schemas/Movie.schema';
 import findOneCategoryUsecase from '@features/category/usecases/find-one-category.usecase';
 import asyncMap from '@utils/async-map.util';
+import { FilterItem } from '@utils/filter/filter.util';
 
-interface FindAllMoviesUsecaseProps {
-  filter?: {
-    key: string;
-    value: string;
-  } | null;
-}
-
-async function findAllMoviesUsecase({ filter }: FindAllMoviesUsecaseProps) {
+async function findAllMoviesUsecase(
+  filter?: FilterItem,
+): Promise<NormalizedMovie[]> {
   let allMovies = [];
 
   if (filter != null) {

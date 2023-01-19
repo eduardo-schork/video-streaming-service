@@ -5,10 +5,8 @@ import findAllMoviesUsecase from '../usecases/find-all-movies.usecase';
 import { MoviesByCategory } from '../types';
 
 // TODO review and refactor this code
-async function findAllMoviesGroupedUsecase() {
-  const allMovies = await findAllMoviesUsecase({
-    filter: null,
-  });
+async function findAllMoviesGroupedUsecase(): Promise<MoviesByCategory[]> {
+  const allMovies = await findAllMoviesUsecase();
 
   let moviesGroupedByCategory: MoviesByCategory[] = [];
 

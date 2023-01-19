@@ -45,7 +45,7 @@ async function handleFindOneMovie(req: Request, res: Response) {
 }
 
 async function handleFindAllMovies(req: Request, res: Response) {
-  const moviesList = await findAllMoviesUsecase({ filter: null });
+  const moviesList = await findAllMoviesUsecase();
 
   res.status(200).send(moviesList);
 }
