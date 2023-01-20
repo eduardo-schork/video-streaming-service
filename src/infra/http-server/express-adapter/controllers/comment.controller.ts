@@ -4,7 +4,7 @@ import MissingParameterError from '@shared/errors/missing-parameter.error';
 import createCommentUsecase from '@features/comment/create-comment.usecase';
 import findOneCommentUsecase from '@features/comment/find-one-comment.usecase';
 import findAllCommentsUsecase from '@features/comment/find-all-comments.usecase';
-import findAllCommentsByMovieUsecase from '@features/comment/find-all-comments-by-movie.usecase';
+import findAllCommentsByMovieUsecase from '@features/comment/comment-by-movie/find-all-comments-by-movie.usecase';
 
 async function handleFindOneComment(req: Request, res: Response) {
   const idToSearch = req.params.id;
